@@ -1,0 +1,4 @@
+[31m[1merror[22m[39m [0m(0 , _util.styleText) is not a function.[0m
+[0mTypeError: (0 , _util.styleText) is not a function
+    at Object.runServer [as func] (C:\Users\manan\Desktop\twodo\frontend\node_modules\@react-native\community-cli-plugin\dist\commands\start\runServer.js:78:25)
+    at async Command.handleAction (C:\Users\manan\Desktop\twodo\frontend\node_modules\@react-native-community\cli\build\index.js:139:9)[0m

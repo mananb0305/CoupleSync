@@ -1,45 +1,33 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { useColorScheme } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AppNavigator from './src/navigation/AppNavigator';
+import { lightTheme, darkTheme } from './src/theme/theme';
+import { AuthProvider } from './src/context/AuthContext';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === 'dark' ? darkTheme : lightTheme;
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <AuthProvider>
+        <PaperProvider theme={theme}>
+          <NavigationContainer>
+            <AppNavigator />
+          </NavigationContainer>
+        </PaperProvider>
+      </AuthProvider>
     </SafeAreaProvider>
   );
-}
+};
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+// Start: Fix NavigationContainer import which was missing in original App.tsx or implied
+// Actually, AppNavigator probably contains it? No, AppNavigator is inside NavigationContainer in previous steps.
+// Let's check App.tsx original content from previous steps. 
+// Step 479: Wrapped NavigationContainer. 
+// I need simple NavigationContainer import.
+import { NavigationContainer } from '@react-navigation/native';
 
 export default App;
