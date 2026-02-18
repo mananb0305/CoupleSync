@@ -1,0 +1,28 @@
+# Systems
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+coverage/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Backend
+backend/dist/
+backend/*.log
+
+# Frontend
+frontend/android/app/build/
+frontend/ios/Pods/
+frontend/ios/build/
